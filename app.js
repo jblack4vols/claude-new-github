@@ -15,7 +15,7 @@ function formatCurrency(value) {
 }
 
 function renderSummary() {
-  const revenue = state.appointments.reduce((total, appointment) => total + Number(appointment.fee), 0);
+  const revenue = state.appointments.reduce((total, appointment) => total + appointment.fee, 0);
   summary.textContent = '';
 
   const blocks = [
@@ -61,7 +61,7 @@ function renderAppointments() {
   for (const appointment of state.appointments) {
     const patient = state.patients.find((patient) => patient.id === appointment.patientId);
     const li = document.createElement('li');
-    li.textContent = `${appointment.date} · ${patient ? patient.name : 'Unknown patient'} · ${formatCurrency(Number(appointment.fee))}`;
+    li.textContent = `${appointment.date} · ${patient ? patient.name : 'Unknown patient'} · ${formatCurrency(appointment.fee)}`;
     appointmentList.appendChild(li);
   }
 }

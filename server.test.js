@@ -16,6 +16,6 @@ test('resolvePath normalizes root request', () => {
 
 test('resolvePath prevents traversal outside root', () => {
   const traversedPath = resolvePath('/../../secret.txt');
-  const normalizedRoot = `${path.resolve(__dirname)}${path.sep}`;
-  assert.ok(path.resolve(traversedPath).startsWith(normalizedRoot));
+  const expectedRootPrefix = `${path.resolve(__dirname)}${path.sep}`;
+  assert.ok(path.resolve(traversedPath).startsWith(expectedRootPrefix));
 });
