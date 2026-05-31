@@ -1,0 +1,22 @@
+{
+  "name": "pt-practice-manager",
+  "version": "1.0.0",
+  "description": "Basic outpatient physical therapy practice manager app",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jblack4vols/claude-new-github.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jblack4vols/claude-new-github/issues"
+  },
+  "homepage": "https://github.com/jblack4vols/claude-new-github#readme"
+}
