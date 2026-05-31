@@ -79,7 +79,6 @@ patientForm.addEventListener('submit', (event) => {
 
   patientForm.reset();
   renderPatients();
-  renderAppointments();
   renderSummary();
 });
 

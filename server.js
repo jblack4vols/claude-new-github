@@ -25,8 +25,9 @@ function resolvePath(urlPath) {
 
 function createServer() {
   return http.createServer((req, res) => {
-    const filePath = resolvePath(req.url || '/');
-    if (!filePath.startsWith(rootDir)) {
+    const filePath = path.resolve(resolvePath(req.url || '/'));
+    const relativePath = path.relative(rootDir, filePath);
+    if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
       res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
       res.end('Forbidden');
       return;
