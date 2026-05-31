@@ -1,5 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const path = require('path');
 const { getContentType, resolvePath } = require('./server');
 
 test('getContentType returns expected mime types', () => {
@@ -15,6 +16,7 @@ test('resolvePath normalizes root request', () => {
 
 test('resolvePath prevents traversal outside root', () => {
   const traversedPath = resolvePath('/../../secret.txt');
+  assert.ok(traversedPath.startsWith(`${__dirname}${path.sep}`));
   assert.ok(traversedPath.includes('/secret.txt'));
   assert.ok(!traversedPath.startsWith('/secret.txt'));
 });

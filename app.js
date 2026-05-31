@@ -59,7 +59,7 @@ function renderAppointments() {
   appointmentList.textContent = '';
 
   for (const appointment of state.appointments) {
-    const patient = state.patients.find((item) => item.id === appointment.patientId);
+    const patient = state.patients.find((patientItem) => patientItem.id === appointment.patientId);
     const li = document.createElement('li');
     li.textContent = `${appointment.date} · ${patient ? patient.name : 'Unknown patient'} · ${formatCurrency(Number(appointment.fee))}`;
     appointmentList.appendChild(li);
