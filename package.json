@@ -1,8 +1,8 @@
 {
-  "name": "claude-new-github",
+  "name": "pt-practice-manager",
   "version": "1.0.0",
   "description": "Basic outpatient physical therapy practice manager app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "node --test",
     "start": "node server.js"

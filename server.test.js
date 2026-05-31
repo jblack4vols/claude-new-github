@@ -6,8 +6,15 @@ test('getContentType returns expected mime types', () => {
   assert.equal(getContentType('styles.css'), 'text/css; charset=utf-8');
   assert.equal(getContentType('app.js'), 'application/javascript; charset=utf-8');
   assert.equal(getContentType('index.html'), 'text/html; charset=utf-8');
+  assert.equal(getContentType('notes.txt'), 'text/plain; charset=utf-8');
 });
 
 test('resolvePath normalizes root request', () => {
   assert.ok(resolvePath('/').endsWith('/index.html'));
+});
+
+test('resolvePath prevents traversal outside root', () => {
+  const traversedPath = resolvePath('/../../secret.txt');
+  assert.ok(traversedPath.includes('/secret.txt'));
+  assert.ok(!traversedPath.startsWith('/secret.txt'));
 });

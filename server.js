@@ -19,7 +19,7 @@ function getContentType(filePath) {
 
 function resolvePath(urlPath) {
   const requestedPath = urlPath === '/' ? '/index.html' : urlPath;
-  const normalizedPath = path.normalize(requestedPath).replace(/^([.][.][/\\])+/, '');
+  const normalizedPath = path.normalize(requestedPath).replace(/^([/\\])+/, '');
   return path.join(rootDir, normalizedPath);
 }
 

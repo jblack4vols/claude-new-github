@@ -7,7 +7,6 @@ Basic web application for a solo-owner outpatient physical therapy business.
 - Store patient contact + condition information
 - Log appointments and visit fees
 - Dashboard totals for patient count, visit count, and revenue
-- Local browser storage so data persists between refreshes
 
 ## Run locally
 

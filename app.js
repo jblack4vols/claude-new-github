@@ -1,5 +1,3 @@
-const storageKey = 'pt-practice-manager-v1';
-
 const state = {
   patients: [],
   appointments: []
@@ -11,26 +9,6 @@ const patientList = document.getElementById('patient-list');
 const appointmentList = document.getElementById('appointment-list');
 const patientSelect = document.getElementById('patient-select');
 const summary = document.getElementById('summary');
-
-function loadState() {
-  const stored = localStorage.getItem(storageKey);
-  if (!stored) {
-    return;
-  }
-
-  try {
-    const parsed = JSON.parse(stored);
-    state.patients = Array.isArray(parsed.patients) ? parsed.patients : [];
-    state.appointments = Array.isArray(parsed.appointments) ? parsed.appointments : [];
-  } catch {
-    state.patients = [];
-    state.appointments = [];
-  }
-}
-
-function saveState() {
-  localStorage.setItem(storageKey, JSON.stringify(state));
-}
 
 function formatCurrency(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
@@ -99,7 +77,6 @@ patientForm.addEventListener('submit', (event) => {
     condition: String(form.get('condition') || '').trim()
   });
 
-  saveState();
   patientForm.reset();
   renderPatients();
   renderAppointments();
@@ -117,13 +94,11 @@ appointmentForm.addEventListener('submit', (event) => {
     fee: Number(form.get('fee') || 0)
   });
 
-  saveState();
   appointmentForm.reset();
   renderAppointments();
   renderSummary();
 });
 
-loadState();
 renderPatients();
 renderAppointments();
 renderSummary();
